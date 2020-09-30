@@ -25,9 +25,6 @@ function scroller() {
 
 
 
-
-
-
   wrapper = document.getElementById("wrapper");
   content = document.getElementById("content");
   test = document.getElementById("test");
