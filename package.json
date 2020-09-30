@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/aersosi/flags-of-he-world.git"
+    "url": "git+ssh://git@github.com/aersosi/flags-for-the-world.git"
   },
   "keywords": [
     "design",
@@ -50,7 +50,7 @@
     "defaults"
   ],
   "bugs": {
-    "url": "https://github.com/aersosi/flags-of-he-world/issues"
+    "url": "https://github.com/aersosi/flags-for-the-world/issues"
   },
-  "homepage": "https://github.com/aersosi/flags-of-he-world#readme"
+  "homepage": "https://github.com/aersosi/flags-for-the-world#readme"
 }
