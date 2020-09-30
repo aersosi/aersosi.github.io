@@ -1,0 +1,24 @@
+{
+  "name": "flags_of_the_world",
+  "version": "0.0.1",
+  "description": "We show custom designed flags",
+  "main": "infinite_scroll.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/aersosi/flags-of-he-world.git"
+  },
+  "keywords": [
+    "design",
+    "flags",
+    "imagegallery"
+  ],
+  "author": "Arthur Ersosi",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/aersosi/flags-of-he-world/issues"
+  },
+  "homepage": "https://github.com/aersosi/flags-of-he-world#readme"
+}

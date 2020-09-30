@@ -1,0 +1,11 @@
+.section-1 {
+    background: red
+  }
+  .section-2 {
+    background: blue
+  }
+  .section-3 {
+    background: green
+  }
+  
+  section{height: 800px}
