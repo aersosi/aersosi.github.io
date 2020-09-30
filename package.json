@@ -4,7 +4,17 @@
   "description": "We show custom designed flags",
   "main": "infinite_scroll.js",
   "scripts": {
-    "test": "test"
+    "css-build": "npm run css-sass && npm run css-autoprefix && npm run css-cleancss",
+    "css-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-docs.css css/bulma-docs.css",
+    "css-cleancss": "cleancss -o css/bulma-docs.min.css css/bulma-docs.css",
+    "css-sass": "node-sass --output-style expanded bulma-docs.sass css/bulma-docs.css",
+    "css-watch": "npm run css-sass -- --watch",
+    "deploy": "npm run css-build && npm run js-build",
+    "js-build": "babel _javascript --out-dir lib",
+    "js-watch": "npm run js-build -- --watch",
+    "start": "npm run css-watch | npm run js-watch",
+    "start-test": "npm run test-scss -- --watch",
+    "test-scss": "node-sass --output-style expanded bulma-test.scss css/bulma-test.css"
   },
   "repository": {
     "type": "git",
@@ -17,6 +27,17 @@
   ],
   "author": "Arthur Ersosi",
   "license": "Apache-2.0",
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-ie": "^6.7.0",
+    "clean-css-cli": "^4.3.0",
+    "metalsmith": "^2.3.0",
+    "metalsmith-filter": "^1.0.2",
+    "node-sass": "^4.13.1",
+    "postcss-cli": "^7.1.0"
+  },
   "bugs": {
     "url": "https://github.com/aersosi/flags-of-he-world/issues"
   },
