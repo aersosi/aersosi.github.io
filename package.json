@@ -1,24 +1,11 @@
 {
-  "name": "flags_of_the_world",
+  "name": "flags-for-a-new-world",
   "version": "0.0.1",
   "description": "We show custom designed flags",
   "main": "infinite_scroll.js",
-  "scripts": {
-    "css-build": "npm run css-sass && npm run css-autoprefix && npm run css-cleancss",
-    "css-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-docs.css css/bulma-docs.css",
-    "css-cleancss": "cleancss -o css/bulma-docs.min.css css/bulma-docs.css",
-    "css-sass": "node-sass --output-style expanded bulma-docs.sass css/bulma-docs.css",
-    "css-watch": "npm run css-sass -- --watch",
-    "deploy": "npm run css-build && npm run js-build",
-    "js-build": "babel _javascript --out-dir lib",
-    "js-watch": "npm run js-build -- --watch",
-    "start": "npm run css-watch | npm run js-watch",
-    "start-test": "npm run test-scss -- --watch",
-    "test-scss": "node-sass --output-style expanded bulma-test.scss css/bulma-test.css"
-  },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/aersosi/flags-for-the-world.git"
+    "url": "git+ssh://git@github.com/aersosi/flags-for-a-new-world.git"
   },
   "keywords": [
     "design",
@@ -50,7 +37,7 @@
     "defaults"
   ],
   "bugs": {
-    "url": "https://github.com/aersosi/flags-for-the-world/issues"
+    "url": "https://github.com/aersosi/flags-for-a-new-world/issues"
   },
-  "homepage": "https://github.com/aersosi/flags-for-the-world#readme"
+  "homepage": "https://github.com/aersosi/flags-for-a-new-world#readme"
 }

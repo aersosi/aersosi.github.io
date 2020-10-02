@@ -9,19 +9,55 @@
 .section-3 
   background: green
 
+.section-4 
+  background: yellow
+
+.section-5 
+  background: pink
+
 section
-  height: 800px
+  // min-height: 800px
+  // margin: 5px
+
+.debug
+  border: 1px solid red
 
 
-#content
+#content section
   display: flex
+  flex-direction: row
   flex-wrap: wrap
   justify-content: center
   
+.img-cont
+  flex: 1 1 480px
+  flex: 0 1 480px
+  @media (min-width: 1200px)
+    flex: 1 1 560px
+    flex: 0 1 560px
+  padding: 24px
 
-#content section 
-  flex: 1 1 150px
-  flex: 0 1 150px
-  margin: 5px
+.img-cont img
+  box-shadow: -2px 3px 10px 0px rgba(0,0,0,0.5);
+  transition: transform .15s ease-in-out, opacity .5s ease-in-out
+  transform: translateY(0)
+  &:hover
+    transform: translateY(-10px)
+
+#content_wrapper
+  height: 100%
+  overflow: auto;
+  padding-top: 110px
+  
 
 
+
+.toTopButton
+  position: fixed
+  bottom: 16px
+  right: 24px
+
+body,
+html
+  overflow: hidden
+  height: 100%
