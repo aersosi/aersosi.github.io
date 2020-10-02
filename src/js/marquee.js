@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function (event) {
   window.requestAnimationFrame = (function () {
     return (
       window.requestAnimationFrame ||
@@ -31,12 +30,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
     function frame() {
       mLeft++; // update parameters
       elem.style.marginLeft = -mLeft + "px"; // show frame
-      if (mLeft == 530) {
+      if (mLeft == 515) {
         elem.style.marginLeft = 0 + "px";
         mLeft = 0;
       }
     }
-    var id = setInterval(frame, 15); // draw every 10ms
+    var id = setInterval(frame, 10); // draw every 10ms
   }
-  marquee();
-});
+  

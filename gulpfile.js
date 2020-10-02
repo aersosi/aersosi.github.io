@@ -54,7 +54,8 @@ gulp.task("formatCss", function () {
 //Javascript Tasks
 gulp.task("transpileToEs5", function () {
     console.log("Transpiling JS --> ES5");
-    return gulp.src(["node_modules/babel-polyfill/dist/polyfill.js", ...js_order])
+    // return gulp.src(["node_modules/babel-polyfill/dist/polyfill.js", ...js_order])
+    return gulp.src(["node_modules/babel-polyfill/dist/polyfill.js", './src/js/scripts.js'])
         .pipe(sourcemaps.init()) // Initialize Source Map
         .pipe(includeJs())
         .pipe(babel({

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" overflow="visible">
+    <defs/>
+    <style>.st1{fill:none;stroke:#E3E3E3;stroke-miterlimit:10}</style>
+    <path fill="#fff" d="M0 0h75v75H0z"/>
+    <path d="M37.5 0v75M75 37.5H0" class="st1"/>
+</svg>

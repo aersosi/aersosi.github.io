@@ -428,20 +428,17 @@ table th {
 table th {
   color: #363636; }
 
-.section-1 {
-  background: red; }
+@font-face {
+  font-family: 'Bluu Next';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/BluuNext-Bold.woff) format("woff"); }
 
-.section-2 {
-  background: blue; }
-
-.section-3 {
-  background: green; }
-
-.section-4 {
-  background: yellow; }
-
-.section-5 {
-  background: pink; }
+@font-face {
+  font-family: 'Bluu Next';
+  font-style: italic;
+  font-weight: 700;
+  src: url(../fonts/BluuNext-Bolditalic.woff) format("woff"); }
 
 .debug {
   border: 1px solid red; }
@@ -455,18 +452,38 @@ table th {
 .img-cont {
   flex: 1 1 480px;
   flex: 0 1 480px;
-  padding: 24px; }
+  padding: 24px;
+  position: relative;
+  opacity: 0;
+  transition: opacity .5s ease-in-out; }
   @media (min-width: 1200px) {
     .img-cont {
       flex: 1 1 560px;
       flex: 0 1 560px; } }
+  .img-cont::before {
+    content: '';
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    top: 55%;
+    right: 0;
+    bottom: 0;
+    left: 75%;
+    z-index: 100;
+    background: url("../img/plus.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity .15s ease-in-out; }
+  .img-cont:hover::before {
+    opacity: .85; }
+  .img-cont.show {
+    opacity: 1; }
 
 .img-cont img {
   box-shadow: -2px 3px 10px 0px rgba(0, 0, 0, 0.5);
-  transition: transform .15s ease-in-out, opacity .5s ease-in-out;
-  transform: translateY(0); }
+  transition: transform .15s ease-in-out; }
   .img-cont img:hover {
-    transform: translateY(-10px); }
+    transform: scale(1.05); }
 
 #content_wrapper {
   height: 100%;
@@ -475,13 +492,38 @@ table th {
 
 .toTopButton {
   position: fixed;
-  bottom: 16px;
-  right: 24px; }
+  bottom: 88px;
+  right: -30px;
+  transform-origin: top center;
+  transform: rotate(-90deg);
+  font-family: 'Bluu Next';
+  font-style: italic;
+  font-size: 2rem;
+  border: none;
+  transition: bottom 0.15s ease-in-out;
+  padding-right: 80px;
+  background: transparent; }
+  .toTopButton:hover {
+    bottom: 96px; }
+  .toTopButton::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 16px;
+    width: 67px;
+    height: 16px;
+    background: url("../img/arrow.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; }
 
 body,
 html {
   overflow: hidden;
   height: 100%; }
+
+body {
+  background: url("../img/bg.svg"); }
 
 .Lightbox {
   position: fixed;
@@ -554,6 +596,8 @@ html {
   margin: 0;
   z-index: 1000;
   font-size: 3rem;
+  font-family: 'Bluu Next';
+  font-style: italic;
   overflow: hidden;
   width: 1000%;
   margin: 0; }

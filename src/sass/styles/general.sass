@@ -1,24 +1,5 @@
 @charset "utf-8"
 
-.section-1 
-  background: red
-
-.section-2 
-  background: blue
-
-.section-3 
-  background: green
-
-.section-4 
-  background: yellow
-
-.section-5 
-  background: pink
-
-section
-  // min-height: 800px
-  // margin: 5px
-
 .debug
   border: 1px solid red
 
@@ -32,17 +13,37 @@ section
 .img-cont
   flex: 1 1 480px
   flex: 0 1 480px
+  padding: 24px
+  position: relative
+  opacity: 0
+  transition: opacity .5s ease-in-out
   @media (min-width: 1200px)
     flex: 1 1 560px
     flex: 0 1 560px
-  padding: 24px
+  &::before
+    content: ''
+    pointer-events: none
+    opacity: 0
+    position: absolute
+    top: 55%
+    right: 0
+    bottom: 0
+    left: 75%
+    z-index: 100
+    background: url('../img/plus.svg')
+    background-position: center
+    background-repeat: no-repeat
+    transition: opacity .15s ease-in-out
+  &:hover::before
+    opacity: .85
+  &.show
+    opacity: 1
 
 .img-cont img
-  box-shadow: -2px 3px 10px 0px rgba(0,0,0,0.5);
-  transition: transform .15s ease-in-out, opacity .5s ease-in-out
-  transform: translateY(0)
+  box-shadow: -2px 3px 10px 0px rgba(0,0,0,0.5)
+  transition: transform .15s ease-in-out
   &:hover
-    transform: translateY(-10px)
+    transform: scale(1.05)
 
 #content_wrapper
   height: 100%
@@ -54,10 +55,35 @@ section
 
 .toTopButton
   position: fixed
-  bottom: 16px
-  right: 24px
+  bottom: 88px
+  right: -30px
+  transform-origin: top center
+  transform: rotate(-90deg)
+  font-family: 'Bluu Next'
+  font-style: italic
+  font-size: 2rem
+  border: none
+  transition: bottom 0.15s ease-in-out
+  padding-right: 80px
+  background: transparent
+  &:hover
+    bottom: 96px
+  &::after
+    content: ''
+    position: absolute
+    right: 0px
+    top: 16px
+    width: 67px
+    height: 16px
+    background: url('../img/arrow.svg')
+    background-position: center
+    background-size: contain
+    background-repeat: no-repeat
 
 body,
 html
   overflow: hidden
   height: 100%
+
+body
+  background: url('../img/bg.svg')
