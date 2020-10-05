@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //= include throttle.js
   //= include putTel.js
   //= include marquee.js
-  //= include modal.js
   //= include clipMarquee.js
+  //= include modal.js
+  //= include bgMove.js
   //= include createIMG.js
   //= include addListeners.js
   //= include makeImagesVisible.js
@@ -35,19 +36,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
     ) {
       void (async () => {
         let response_jpg = await fetch(`./dist/img/flags/flg_${img_count}.jpg`);
-        let blob_jpg = await response_jpg.blob();
-        // let fileType_jpg = blob_jpg.type;
-
         let response_png = await fetch(`./dist/img/flags/flg_${img_count}.png`);
-        let blob_png = await response_png.blob();
-        // let fileType_png = blob.type;
 
         if (response_jpg.ok) {
+          let blob_jpg = await response_jpg.blob();
+          // let fileType_jpg = blob_jpg.type;
           createIMG(blob_jpg, img_count);
           img_count += 1;
           addListeners();
           makeImagesVisible();
         } else if (response_png.ok) {
+          let blob_png = await response_png.blob();
+          // let fileType_png = blob.type;
           createIMG(blob_png, img_count);
           img_count += 1;
           addListeners();
@@ -81,13 +81,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //   return scrollbarWidth;
   // }
 
-  let bgMove = () => {
-    let velocity = 0.05;
-    let testCat = document.querySelector("body");
-    let pos = content_wrapper.scrollTop;
-    // testCat.style.backgroundPositionY = Math.ceil(-pos) * velocity + 'px';
-    testCat.style.backgroundPositionY = -pos * velocity + "px";
-  };
+
 
   content_wrapper.addEventListener("scroll", bgMove);
   ///////////////////// events
