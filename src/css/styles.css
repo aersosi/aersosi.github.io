@@ -433,7 +433,7 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: .98;
+  opacity: .95;
   background: url("../img/bg.svg");
   background-position: center;
   background-size: 60px; }
@@ -536,7 +536,7 @@ footer {
       padding-right: 16px; }
 
 .modalWrapper.show {
-  opacity: .98; }
+  opacity: .95; }
 
 .aboutImprint {
   cursor: crosshair; }

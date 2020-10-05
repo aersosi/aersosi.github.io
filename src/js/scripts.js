@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   toTopButton.addEventListener("click", toTop, false);
 
   let aboutImprint = document.querySelector(".aboutImprint");
-  console.log(aboutImprint)
   aboutImprint.addEventListener("click", addModal);
 
   let aboutImprintClose = document.querySelector(".close");
@@ -107,7 +106,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-  content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 20), false);
+  // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 20), false);
+  content_wrapper.addEventListener("scroll", loadImgAfter, false);
   makeImagesVisible();
   addListeners();
 
