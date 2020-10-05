@@ -1,5 +1,8 @@
 const dotenv = require("dotenv"); // Read Environment Variables
 const gulp = require("gulp"); // Task runner
+const babel = require("gulp-babel"); // Transform latest ES code to ES5
+
+
 const debug = require('gulp-debug'); // Debug gulp
 
 const sourcemaps = require("gulp-sourcemaps"); // Creates a source map for minimized code that points back to the preminized version
@@ -9,7 +12,6 @@ const cleanCSS = require("gulp-clean-css"); // Minification of CSS
 const sass = require("gulp-sass"); // Transpile sass to css
 const autoprefixer = require("gulp-autoprefixer"); // Adds Auto Prefix for CSS styles such as webkits in css
 const uglify = require("gulp-uglify-es").default; // Obfuscate JS files
-const babel = require("gulp-babel"); // Transform latest ES code to ES5
 const includeJs = require('gulp-browser-js-include');
 
 // Paths

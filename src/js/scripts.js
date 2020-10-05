@@ -1,91 +1,109 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   //= include throttle.js
   //= include scrollToTop.js
+  //= include createIMG.js
+  //= include addListeners.js
   //= include makeImagesVisible.js
   //= include marquee.js
-  //= include basicLightBox.min.js
+  //= include lightBox.min.js
 
   let content_wrapper = document.querySelector("#content_wrapper");
   let content = document.querySelector("#content section");
 
-  let img_count = 13;
-  let img_count2 = img_count + 1;
-  let img_count3 = img_count + 2;
-
   ///////////////////// add images on scroll
   // todo: maybe always add 3 images?
 
-  function loadImgAfter() {
+  let img_count = 13;
+  let gateway = true;
+
+  let isFileImage = (blob) => {
+    const acceptedImageTypes = ["image/gif", "image/jpeg", "image/png"];
+
+    console.log(blob.type);
+    // return blob && acceptedImageTypes.includes(blob.type);
+    return blob.type
+  };
+
+
+
+  let loadImgAfter = () => {
     if (
-      content_wrapper.scrollTop + content_wrapper.offsetHeight + 200 >
+      content_wrapper.scrollTop + content_wrapper.offsetHeight + 300 >
         content.offsetHeight &&
-      img_count < 35
+      gateway
     ) {
-      let more_3 = `
-        <div class="img-cont flg_${img_count}">
-          <img class="image" src="./dist/img/flags/flg_${img_count}.jpg" alt="Flag number ${img_count}">
-        </div>
-        <div class="img-cont flg_${img_count2}">
-          <img class="image" src="./dist/img/flags/flg_${img_count2}.jpg" alt="Flag number ${img_count2}">
-        </div>
-        <div class="img-cont flg_${img_count3}">
-          <img class="image" src="./dist/img/flags/flg_${img_count3}.jpg" alt="Flag number ${img_count3}">
-        </div>`;
-      content.innerHTML += more_3;
+      void (async () => {
+        let response_jpg = await fetch(`./dist/img/flags/flg_${img_count}.jpg`);
+        let blob_jpg = await response_jpg.blob();
+        // let fileType_jpg = blob_jpg.type;
+        // console.log(fileType);
 
-      makeImagesVisible();
-      addListeners();
+          let response_png = await fetch(`./dist/img/flags/flg_${img_count}.png`);
+          let blob_png = await response_png.blob();
 
-      img_count += 3;
-      img_count2 += 3;
-      img_count3 += 3;
+        // let fileType_png = blob.type;
+
+        // if (response.ok && fileType === 'image/jpeg') {
+        if (response_jpg.ok) {
+          createIMG(blob_jpg, img_count);
+          img_count += 1;
+          addListeners();
+          makeImagesVisible();
+        } else if (response_png.ok){
+          createIMG(blob_png, img_count);
+          img_count += 1;
+          addListeners();
+          makeImagesVisible();
+        } else {
+          gateway = false;
+          console.info("Out of Flags");
+        }
+      })();
     }
-  }
+  };
 
   ///////////////////// eventlisteners for imagelightbox
   // todo: eventlisteners are added multiple times on scroll --> prevent double listeners
 
-  function addListeners() {
-    document.querySelectorAll(".img-cont img").forEach((item) => {
-      item.addEventListener("click", (event) => {
-        let target_link = event.target.src;
-        Lightbox.create(`<img src="${target_link}">`).show();
-      });
-    });
+
+
+  // function getScrollbarWidth() {
+  //   // Creating invisible container
+  //   const outer = document.createElement("div");
+  //   outer.style.visibility = "hidden";
+  //   outer.style.overflow = "scroll"; // forcing scrollbar to appear
+  //   outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+  //   document.body.appendChild(outer);
+
+  //   // Creating inner element and placing it in the container
+  //   const inner = document.createElement("div");
+  //   outer.appendChild(inner);
+
+  //   // Calculating difference between container's full width and the child width
+  //   const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+
+  //   // Removing temporary elements from the DOM
+  //   outer.parentNode.removeChild(outer);
+  //   // console.log(scrollbarWidth)
+  //   return scrollbarWidth;
+  // }
+
+  function clipSlider() {
+    let slider = document.querySelector(".slider");
+    let sectionWidth = document.querySelector("section").scrollWidth;
+    slider.style.clip = "rect(0px," + sectionWidth + "px,200px,0px)";
   }
-  addListeners();
-
-
-  
-
-  ///////////////////// test for image 404
-  //   function testImage(URL) {
-  //     var tester=new Image();
-  //     tester.onload=imageFound;
-  //     tester.onerror=imageNotFound;
-  //     tester.src=URL;
-  // }
-
-  // function imageFound() {
-  //     alert('That image is found and loaded');
-  // }
-
-  // function imageNotFound() {
-  //     alert('That image was not found.');
-  // }
-
-  // testImage("http://foo.com/bar.jpg");
-
-
+  clipSlider();
 
   ///////////////////// events
 
   marquee();
   makeImagesVisible();
+  addListeners();
 
   let toTopButton = document.querySelector(".toTopButton");
   toTopButton.addEventListener("click", toTop, false);
 
   content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 30), false);
-  
+  window.addEventListener("resize", clipSlider);
 });

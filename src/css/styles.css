@@ -493,7 +493,7 @@ table th {
 .toTopButton {
   position: fixed;
   bottom: 88px;
-  right: -30px;
+  right: -42px;
   transform-origin: top center;
   transform: rotate(-90deg);
   font-family: 'Bluu Next';
@@ -536,7 +536,7 @@ body {
   height: 100vh;
   background: rgba(0, 0, 0, 0.8);
   opacity: .01;
-  transition: opacity .4s ease;
+  transition: opacity .25s ease;
   z-index: 1000;
   will-change: opacity; }
 
@@ -547,9 +547,9 @@ body {
   max-width: 100%;
   -webkit-transform: scale(0.9);
   transform: scale(0.9);
-  transition: -webkit-transform .4s ease;
-  transition: transform .4s ease;
-  transition: transform .4s ease, -webkit-transform .4s ease;
+  transition: -webkit-transform .25s ease;
+  transition: transform .25s ease;
+  transition: transform .25s ease, -webkit-transform .25s ease;
   z-index: 1;
   will-change: transform; }
 
@@ -587,20 +587,16 @@ body {
   transform: scale(1); }
 
 .slider {
-  width: 100%;
-  overflow: hidden;
   position: fixed;
   top: 28px;
   left: 0;
   right: 10px;
-  margin: 0;
+  width: 1000%;
+  overflow: hidden;
   z-index: 1000;
   font-size: 3rem;
   font-family: 'Bluu Next';
-  font-style: italic;
-  overflow: hidden;
-  width: 1000%;
-  margin: 0; }
+  font-style: italic; }
   .slider li {
     list-style: none;
     display: inline-block; }
