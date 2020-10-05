@@ -5,5 +5,5 @@ function makeImagesVisible() {
         item.classList.add("show");
       }, i * 100);
     });
-  }, 100);
+  }, 800);
 }

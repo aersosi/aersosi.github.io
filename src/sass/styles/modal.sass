@@ -1,0 +1,42 @@
+.modalWrapper
+    display: none
+    justify-content: center
+    align-items: center
+    top: 0
+    left: 0
+    width: 100%
+    height: 100vh
+    background: rgba(255, 255, 255, .8)
+    opacity: 0
+    transition: all .25s ease-in-out
+    z-index: 1000
+    background: url('../img/bg.svg')
+    background-position: center
+    background-size: 60px
+    @media (max-width: 911px)
+        background-size: 50px
+    @media (max-width: 600px)
+        background-size: 40px
+    .modal
+        width: 100%
+        height: 100%
+        padding: 56px
+    .close
+        position: absolute
+        top: 56px
+        right: 56px
+        font-size: 2rem
+        font-family: 'Bluu Next'
+        font-style: italic
+        transition: padding .15s ease-in-out
+        cursor: crosshair
+        &:hover
+            padding-right: 16px
+    
+.modalWrapper.show
+    opacity: .98
+    
+
+
+.aboutImprint
+    cursor: crosshair

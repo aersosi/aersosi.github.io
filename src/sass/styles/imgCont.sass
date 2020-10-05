@@ -1,0 +1,42 @@
+.img-cont
+  flex: 1 1 400px
+  flex: 0 1 400px
+  margin: 24px
+  position: relative
+  opacity: 0
+  transition: opacity .5s ease-in-out
+  cursor: crosshair
+  @media (min-width: 1200px)
+    flex: 1 1 480px
+    flex: 0 1 480px
+  @media (orientation: portrait) and (max-width: 911px)
+    flex: 1 1 60%
+    flex: 0 1 60%
+  @media (orientation: portrait) and (max-width: 600px)
+    flex: 1 1 75%
+    flex: 0 1 75%
+  &::before
+    content: ''
+    pointer-events: none
+    opacity: 0
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 75px
+    height: 75
+    z-index: 100
+    background: url('../img/plus.svg')
+    background-size: contain
+    background-position: center
+    background-repeat: no-repeat
+    transition: opacity .15s ease-in-out
+  &:hover::before
+    opacity: .85
+  &.show
+    opacity: 1
+
+.img-cont img
+  box-shadow: -2px 3px 10px 0px rgba(0,0,0,0.5)
+  transition: transform .15s ease-in-out
+  &:hover
+    transform: scale(1.05)

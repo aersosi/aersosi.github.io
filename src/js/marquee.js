@@ -30,7 +30,7 @@
     function frame() {
       mLeft++; // update parameters
       elem.style.marginLeft = -mLeft + "px"; // show frame
-      if (mLeft == 515) {
+      if (mLeft == 543) {
         elem.style.marginLeft = 0 + "px";
         mLeft = 0;
       }
