@@ -16,17 +16,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   ///////////////////// add images on scroll
   // todo: maybe always add 3 images?
-
-  // let isFileImage = (blob) => {
-  //   const acceptedImageTypes = ["image/gif", "image/jpeg", "image/png"];
-
-  //   console.log(blob.type);
-  //   // return blob && acceptedImageTypes.includes(blob.type);
-  //   return blob.type
-  // };
-
   let img_count = 13;
   let gateway = true;
+      let failCount = 0;
+
+  let tryIMG = (imgTRY, failIMG) => {
+
+    let request_img = new Request(imgTRY);
+    fetch(request_img).then((response) => {
+
+      response.blob().then((blob_img) => {
+        if (failCount >= 10) {
+          gateway = false;
+          console.info("Out of Flags");
+        } else if (!response.ok && gateway) {
+          failCount++;
+          console.log(failCount);
+          tryIMG(failIMG, imgTRY);
+        } else if (response.ok && gateway) {
+          createIMG(blob_img, img_count);
+          img_count += 1;
+          addListeners();
+          makeImagesVisible();
+        }
+      });
+    });
+  };
 
   let loadImgAfter = () => {
     if (
@@ -34,29 +49,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         content.offsetHeight &&
       gateway
     ) {
-      void (async () => {
-        let response_jpg = await fetch(`./dist/img/flags/flg_${img_count}.jpg`);
-        let response_png = await fetch(`./dist/img/flags/flg_${img_count}.png`);
+      let png = `./dist/img/flags/flg_${img_count}.png`;
+      let jpg = `./dist/img/flags/flg_${img_count}.jpg`;
 
-        if (response_jpg.ok) {
-          let blob_jpg = await response_jpg.blob();
-          // let fileType_jpg = blob_jpg.type;
-          createIMG(blob_jpg, img_count);
-          img_count += 1;
-          addListeners();
-          makeImagesVisible();
-        } else if (response_png.ok) {
-          let blob_png = await response_png.blob();
-          // let fileType_png = blob.type;
-          createIMG(blob_png, img_count);
-          img_count += 1;
-          addListeners();
-          makeImagesVisible();
-        } else {
-          gateway = false;
-          console.info("Out of Flags");
-        }
-      })();
+      tryIMG(png, jpg);
     }
   };
 
@@ -81,12 +77,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //   return scrollbarWidth;
   // }
 
-
-
   content_wrapper.addEventListener("scroll", bgMove);
   ///////////////////// events
-
-
 
   let toTopButton = document.querySelector(".toTopButton");
   toTopButton.addEventListener("click", toTop, false);
@@ -96,9 +88,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   let aboutImprintClose = document.querySelector(".close");
   aboutImprintClose.addEventListener("click", removeModal);
-
-
-
 
   // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 20), false);
   content_wrapper.addEventListener("scroll", loadImgAfter, false);
