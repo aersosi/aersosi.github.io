@@ -20,41 +20,42 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let gateway = true;
   let failCount = 0;
 
-  const tryIMG = (imgTRY, failIMG) => {
-    const request_img = new Request(imgTRY);
-    fetch(request_img).then((response) => {
-      response.blob().then((blob_img) => {
-        if (failCount >= 14) {
-          gateway = false;
-          // console.info("Out of Flags");
-        } else if (!response.ok && gateway) {
-          failCount++;
-          // console.log(failCount);
-          tryIMG(failIMG, imgTRY);
-        } else if (response.ok && gateway) {
-          createIMG(blob_img, img_count);
-          if (createIMG) {
-            // console.log(img_count)
-            img_count += 1;
-            console.log('create image true')
-            addListeners();
-            makeImagesVisible();
-          }
-        }
-      });
-    });
-  };
-
   const loadImgAfter = () => {
     if (
       content_wrapper.scrollTop + content_wrapper.offsetHeight + 300 >
-        content.offsetHeight &&
-      gateway
+        content.offsetHeight && gateway
     ) {
-      console.log(img_count)
+
+      
+      const tryIMG = (imgTRY, failIMG) => {
+        const request_img = new Request(imgTRY);
+        fetch(request_img).then((response) => {
+          response.blob().then((blob_img) => {
+            if (failCount >= 14) {
+              gateway = false;
+              // console.info("Out of Flags");
+            } else if (!response.ok && gateway) {
+              failCount++;
+              // console.log(failCount);
+              tryIMG(failIMG, imgTRY);
+            } else if (response.ok && gateway) {
+              createIMG(blob_img, img_count);
+              if (createIMG) {
+                // console.log(img_count)
+                img_count += 1;
+                console.log("create image true");
+                addListeners();
+                makeImagesVisible();
+              }
+            }
+          });
+        });
+      };
+
+
+      console.log(img_count);
       let png = `./dist/img/flags/flg_${img_count}.png`;
       let jpg = `./dist/img/flags/flg_${img_count}.jpg`;
-
       tryIMG(png, jpg);
     }
   };
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let aboutImprintClose = document.querySelector(".close");
   aboutImprintClose.addEventListener("click", removeModal);
 
-  content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 30), false);
+  content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 10), false);
   // content_wrapper.addEventListener("scroll", loadImgAfter, false);
   makeImagesVisible();
   addListeners();
