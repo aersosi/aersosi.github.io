@@ -4,4 +4,5 @@ function isFileImage(blob) {
         // console.log(file)
       return true;
     }
+    return false;
   }
