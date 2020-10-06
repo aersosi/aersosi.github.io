@@ -35,9 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         fetch(new Request(tryFirst)).then((response) => {
           
-          
-          
-          
           if (failCount >= 14) {
             gateWay = false;
             // console.info("Out of Flags");
