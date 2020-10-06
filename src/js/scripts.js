@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (response.ok && gateWay) {
             
             response.blob().then((blob_img) => {
+
               const created = createIMG(blob_img);
               
               if (created) {
