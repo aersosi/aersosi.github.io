@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let gateway = true;
   let failCount = 0;
 
-  let tryIMG = (imgTRY, failIMG) => {
-    let request_img = new Request(imgTRY);
+  const tryIMG = (imgTRY, failIMG) => {
+    const request_img = new Request(imgTRY);
     fetch(request_img).then((response) => {
       response.blob().then((blob_img) => {
         if (failCount >= 14) {
@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         } else if (response.ok && gateway) {
           createIMG(blob_img, img_count);
           if (createIMG) {
+            // console.log(img_count)
             img_count += 1;
-            console.log(img_count)
             console.log('create image true')
             addListeners();
             makeImagesVisible();
@@ -45,12 +45,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
   };
 
-  let loadImgAfter = () => {
+  const loadImgAfter = () => {
     if (
       content_wrapper.scrollTop + content_wrapper.offsetHeight + 300 >
         content.offsetHeight &&
       gateway
     ) {
+      console.log(img_count)
       let png = `./dist/img/flags/flg_${img_count}.png`;
       let jpg = `./dist/img/flags/flg_${img_count}.jpg`;
 
@@ -91,8 +92,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let aboutImprintClose = document.querySelector(".close");
   aboutImprintClose.addEventListener("click", removeModal);
 
-  // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 20), false);
-  content_wrapper.addEventListener("scroll", loadImgAfter, false);
+  content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 30), false);
+  // content_wrapper.addEventListener("scroll", loadImgAfter, false);
   makeImagesVisible();
   addListeners();
 
