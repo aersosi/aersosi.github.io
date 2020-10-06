@@ -59,8 +59,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
       let png = `./dist/img/flags/flg_${img_count}.png`;
       let jpg = `./dist/img/flags/flg_${img_count}.jpg`;
 
+      // var i = 0;
 
-      throttle(tryIMG(png, jpg), 1000)
+      // for (i; i <= 2; i++) {
+        throttle(tryIMG(png, jpg), 1000)
+        // tryIMG(png, jpg);
+        
+      // }
+
+
       
     }
   };
