@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // console.log(contentVal)
 
       const tryIMG = (tryFirst, tryAfter) => {
+        console.log('Tryfirst URL: ',tryFirst)
         
         fetch(new Request(tryFirst)).then((response) => {
           
