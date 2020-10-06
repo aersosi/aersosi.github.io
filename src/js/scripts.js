@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let request_img = new Request(imgTRY);
     fetch(request_img).then((response) => {
       response.blob().then((blob_img) => {
-        if (failCount >= 10) {
+        if (failCount >= 14) {
           gateway = false;
           console.info("Out of Flags");
         } else if (!response.ok && gateway) {
