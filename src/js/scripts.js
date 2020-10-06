@@ -18,13 +18,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // todo: maybe always add 3 images?
   let img_count = 13;
   let gateway = true;
-      let failCount = 0;
+  let failCount = 0;
 
   let tryIMG = (imgTRY, failIMG) => {
-
     let request_img = new Request(imgTRY);
     fetch(request_img).then((response) => {
-
       response.blob().then((blob_img) => {
         if (failCount >= 10) {
           gateway = false;
@@ -35,9 +33,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
           tryIMG(failIMG, imgTRY);
         } else if (response.ok && gateway) {
           createIMG(blob_img, img_count);
-          img_count += 1;
-          addListeners();
-          makeImagesVisible();
+          if (createIMG) {
+            console.log('create image true')
+            img_count += 1;
+            addListeners();
+            makeImagesVisible();
+          }
         }
       });
     });
