@@ -1,5 +1,5 @@
-let addModal = () => {
-    let modal_Wrapper = document.querySelector(".modalWrapper");
+const addModal = () => {
+  const modal_Wrapper = document.querySelector(".modalWrapper");
 
   modal_Wrapper.style.position = "fixed";
   modal_Wrapper.style.display = "flex";
@@ -8,8 +8,8 @@ let addModal = () => {
   }, 250);
 };
 
-let removeModal = () => {
-    let modal_Wrapper = document.querySelector(".modalWrapper");
+const removeModal = () => {
+  const modal_Wrapper = document.querySelector(".modalWrapper");
 
   modal_Wrapper.classList.remove("show");
   setTimeout(() => {

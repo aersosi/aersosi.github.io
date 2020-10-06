@@ -1,4 +1,4 @@
-  window.requestAnimationFrame = (function () {
+  window.requestAnimationFrame = ( () => {
     return (
       window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
@@ -9,25 +9,14 @@
     );
   })();
 
-  //   const speed = 5000;
-  //   function currencySlide(){
-  //         const currencyPairWidth = $('.slideItem:first-child').outerWidth();
-  //       $(".slideContainer").animate({marginLeft:-currencyPairWidth},speed, 'linear', function(){
-  //                   $(this).css({marginLeft:0}).find("li:last").after($(this).find("li:first"));
-  //           });
-  //           requestAnimationFrame(currencySlide);
-  //   }
-
-  //   currencySlide();
-
-  function marquee() {
-    let slideItem = document.querySelectorAll(".slideItem");
+  const marquee = () => {
+    const slideItem = document.querySelectorAll(".slideItem");
     move(slideItem[0]);
   }
 
-  function move(elem) {
-    var mLeft = 0;
-    function frame() {
+  const move = (elem) => {
+    let mLeft = 0;
+    const frame = () => {
       mLeft++; // update parameters
       elem.style.marginLeft = -mLeft + "px"; // show frame
       if (mLeft == 543) {
@@ -35,6 +24,6 @@
         mLeft = 0;
       }
     }
-    var id = setInterval(frame, 10); // draw every 10ms
+    const id = setInterval(frame, 10); // draw every 10ms
   }
   

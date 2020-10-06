@@ -1,6 +1,6 @@
   ///////////////////// to the top
 
-  let toTop = () => {
+  const toTop = () => {
     content_wrapper.scrollTo({
       top: 0,
       left: 0,

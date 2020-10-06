@@ -1,5 +1,5 @@
 // generic elementcollector for putEmail, putTel
-let getElementsByClass = (elem, classname) => {
+const getElementsByClass = (elem, classname) => {
     const classes = new Array();
     const alltags = document.getElementsByTagName(elem);
     let i;
@@ -10,7 +10,7 @@ let getElementsByClass = (elem, classname) => {
 }
 
 
-let putEmail = (eml, emlSpan, textWhite) => {
+const putEmail = (eml, emlSpan, textWhite) => {
     if (emlSpan) {
         const link = document.createElement("a");
         link.setAttribute("href", "mailto:" + eml);
@@ -23,6 +23,6 @@ let putEmail = (eml, emlSpan, textWhite) => {
 
 
 
-let eMail_span = 'eMail_span'
-let eMail = ['a.ers', 'osi@gm', 'x.de']
+const eMail_span = 'eMail_span'
+const eMail = ['a.ers', 'osi@gm', 'x.de']
 putEmail(eMail.join(''), eMail_span);
