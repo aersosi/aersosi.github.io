@@ -26,16 +26,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
       response.blob().then((blob_img) => {
         if (failCount >= 14) {
           gateway = false;
-          console.info("Out of Flags");
+          // console.info("Out of Flags");
         } else if (!response.ok && gateway) {
           failCount++;
-          console.log(failCount);
+          // console.log(failCount);
           tryIMG(failIMG, imgTRY);
         } else if (response.ok && gateway) {
           createIMG(blob_img, img_count);
           if (createIMG) {
-            console.log('create image true')
             img_count += 1;
+            console.log(img_count)
+            console.log('create image true')
             addListeners();
             makeImagesVisible();
           }
