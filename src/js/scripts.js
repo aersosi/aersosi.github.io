@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let gateway = true;
   let failCount = 0;
 
+
+
   const loadImgAfter = () => {
     if (
       content_wrapper.scrollTop + content_wrapper.offsetHeight + 300 >
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             } else if (!response.ok && gateway) {
               failCount++;
               // console.log(failCount);
-              tryIMG(failIMG, imgTRY);
+              throttle(tryIMG(failIMG, imgTRY), 1000)
             } else if (response.ok && gateway) {
               createIMG(blob_img, img_count);
               if (createIMG) {
@@ -56,7 +58,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
       console.log(img_count);
       let png = `./dist/img/flags/flg_${img_count}.png`;
       let jpg = `./dist/img/flags/flg_${img_count}.jpg`;
-      tryIMG(png, jpg);
+
+
+      throttle(tryIMG(png, jpg), 1000)
+      
     }
   };
 
@@ -93,8 +98,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let aboutImprintClose = document.querySelector(".close");
   aboutImprintClose.addEventListener("click", removeModal);
 
-  content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 10), false);
-  // content_wrapper.addEventListener("scroll", loadImgAfter, false);
+  // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 10), false);
+  content_wrapper.addEventListener("scroll", loadImgAfter, false);
   makeImagesVisible();
   addListeners();
 
