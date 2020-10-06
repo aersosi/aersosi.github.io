@@ -34,18 +34,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const tryIMG = (tryFirst, tryAfter) => {
         
         fetch(new Request(tryFirst)).then((response) => {
-          response.blob().then((blob_img) => {
-            if (failCount >= 14) {
-              gateWay = false;
-              // console.info("Out of Flags");
-            } else if (!response.ok && gateWay) {
-              failCount++;
-              tryIMG(tryAfter, tryFirst);
-              // console.log(failCount);
-              // throttle(tryIMG(failIMG, imgTRY), 2000)
-            } else if (response.ok && gateWay) {
-              createIMG(blob_img, img_count);
-
+          
+          
+          
+          
+          if (failCount >= 14) {
+            gateWay = false;
+            // console.info("Out of Flags");
+          } else if (!response.ok && gateWay) {
+            failCount++;
+            tryIMG(tryAfter, tryFirst);
+            // console.log(failCount);
+            // throttle(tryIMG(failIMG, imgTRY), 2000)
+          } else if (response.ok && gateWay) {
+            
+            response.blob().then((blob_img) => {
+              createIMG(blob_img);
+              
               if (createIMG) {
                 // console.log(img_count)
                 img_count += 1;
@@ -53,10 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 addListeners();
                 makeImagesVisible();
               }
+            });
+
             }
-          });
+
+
+
         });
-        
       };
       
       console.log(img_count);
