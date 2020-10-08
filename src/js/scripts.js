@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function (event) {
   //= include throttle.js
   //= include putTel.js
   //= include marquee.js
@@ -11,90 +11,113 @@ document.addEventListener("DOMContentLoaded", () => {
   //= include scrollToTop.js
   //= include lightBox.min.js
 
-  const content_wrapper = document.querySelector("#content_wrapper");
-  const content = document.querySelector("#content main");
+  let content_wrapper = document.querySelector("#content_wrapper");
+  let content = document.querySelector("#content main");
 
   ///////////////////// add images on scroll
   // todo: maybe always add 3 images?
   let img_count = 13;
-  let gateWay = true;
+  let gateway = true;
   let failCount = 0;
 
+
+
   const loadImgAfter = () => {
-    const buffer = 300;
-    const wrapperVal = Math.round(
-      content_wrapper.scrollTop + content_wrapper.offsetHeight
-    );
+    const wrapperVal = Math.round(content_wrapper.scrollTop + content_wrapper.offsetHeight);
     const contentVal = content.offsetHeight;
 
-    if (wrapperVal + buffer >= contentVal && gateWay) {
-      // console.log(wrapperVal)
-      // console.log(contentVal)
+    if (wrapperVal + 300 >= contentVal && gateway) {
 
-      const tryIMG = (tryFirst, tryAfter) => {
-        console.log('Tryfirst URL: ',tryFirst)
-        
-        fetch(new Request(tryFirst)).then((response) => {
-          
-          if (failCount >= 14) {
-            gateWay = false;
-            // console.info("Out of Flags");
-          } else if (!response.ok && gateWay) {
-            failCount++;
-            tryIMG(tryAfter, tryFirst);
-            // console.log(failCount);
-            // throttle(tryIMG(failIMG, imgTRY), 2000)
-          } else if (response.ok && gateWay) {
-            
-            response.blob().then((blob_img) => {
+      console.log(content_wrapper.scrollTop + content_wrapper.offsetHeight + 300)
+      console.log(content.offsetHeight)
 
-              const created = createIMG(blob_img);
+      
+      const tryIMG = async (imgTRY, failIMG) => {
+        await fetch(new Request(imgTRY)).then((response) => {
+          response.blob().then((blob_img) => {
+
+            if (failCount >= 14) {
+
+              gateway = false;
+              // console.info("Out of Flags");
               
-              if (created) {
+            } else if (!response.ok && gateway) {
+
+              failCount++;
+              // console.log(failCount);
+              throttle(tryIMG(failIMG, imgTRY), 1000)
+
+            } else if (response.ok && gateway) {
+
+              createIMG(blob_img, img_count);
+
+              if (createIMG) {
                 // console.log(img_count)
-                img_count += 1;
+                img_count ++;
                 console.log("create image true");
                 addListeners();
                 makeImagesVisible();
               }
-            });
-
             }
 
 
 
+          });
         });
       };
-      
+
+
       console.log(img_count);
-      const png = `./dist/img/flags/flg_${img_count}.png`;
-      const jpg = `./dist/img/flags/flg_${img_count}.jpg`;
-      tryIMG(png, jpg);
+      let png = `./dist/img/flags/flg_${img_count}.png`;
+      let jpg = `./dist/img/flags/flg_${img_count}.jpg`;
+
+      // var i = 0;
+
+      // for (i; i <= 2; i++) {
+        throttle(tryIMG(png, jpg), 1000)
+        // tryIMG(png, jpg);
+        
+      // }
+
+
       
-      // for (var i = 0; i <= 2; i++) {
-        // throttle(tryIMG(png, jpg), 2000)
-        // }
-      }
+    }
   };
 
+  // function getScrollbarWidth() {
+  //   // Creating invisible container
+  //   const outer = document.createElement("div");
+  //   outer.style.visibility = "hidden";
+  //   outer.style.overflow = "scroll"; // forcing scrollbar to appear
+  //   outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+  //   document.body.appendChild(outer);
 
+  //   // Creating inner element and placing it in the container
+  //   const inner = document.createElement("div");
+  //   outer.appendChild(inner);
 
+  //   // Calculating difference between container's full width and the child width
+  //   const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
 
-
+  //   // Removing temporary elements from the DOM
+  //   outer.parentNode.removeChild(outer);
+  //   // console.log(scrollbarWidth)
+  //   return scrollbarWidth;
+  // }
 
   content_wrapper.addEventListener("scroll", bgMove);
   ///////////////////// events
 
-  const toTopButton = document.querySelector(".toTopButton");
+  let toTopButton = document.querySelector(".toTopButton");
   toTopButton.addEventListener("click", toTop, false);
 
-  const aboutImprint = document.querySelector(".aboutImprint");
+  let aboutImprint = document.querySelector(".aboutImprint");
   aboutImprint.addEventListener("click", addModal);
 
-  const aboutImprintClose = document.querySelector(".close");
+  let aboutImprintClose = document.querySelector(".close");
   aboutImprintClose.addEventListener("click", removeModal);
 
-  // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 200), false);
+  // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 10), false);
   content_wrapper.addEventListener("scroll", loadImgAfter, false);
   makeImagesVisible();
   addListeners();

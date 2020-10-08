@@ -37,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/aersosi/flags-for-a-new-world/issues"
   },
-  "homepage": "https://github.com/aersosi/flags-for-a-new-world#readme"
+  "homepage": "https://github.com/aersosi/flags-for-a-new-world#readme",
+  "dependencies": {
+    "http-serve": "^1.0.1"
+  }
 }
