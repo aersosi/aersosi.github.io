@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
+
+  console.log('await2000')
   //= include throttle.js
   //= include putTel.js
   //= include marquee.js
@@ -54,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
               if (createIMG) {
                 // console.log(img_count)
                 img_count ++;
-                console.log("create image true");
+                // console.log("create image true");
                 addListeners();
                 makeImagesVisible();
               }

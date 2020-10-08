@@ -5,8 +5,8 @@ let createIMG = (blob, img_count) => {
   isFileImage(blob);
   let img_URL = URL.createObjectURL(blob);
 
-  console.log(blob.type);
-  console.log(blob);
+  // console.log(blob.type);
+  // console.log(blob);
 
   if (isFileImage) {
     let more_1 = `<div class="img-cont flg_${img_count}">
