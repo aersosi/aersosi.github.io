@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           cleanArr.push(element);
         }
         if (itemsProcessed === arr.length) {
-          appendIMG(cleanArr)
+          appendIMG(cleanArr.sort())
         }
       })
     );
