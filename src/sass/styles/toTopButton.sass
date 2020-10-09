@@ -1,27 +1,21 @@
 .toTopButton
   position: fixed
-  bottom: 96px
-  right: -42px
-  transform-origin: top center
+  bottom: 110px
+  right: -75px
+  transform-origin: center
   transform: rotate(-90deg)
   font-family: 'Bluu Next'
   font-style: italic
   font-size: 2rem
   border: none
-  transition: bottom 0.15s ease-in-out
-  padding-right: 80px
+  transition: bottom 0.15s ease-in-out, color 0.15s ease-in-out, fill 0.15s ease-in-out
   background: transparent
   cursor: crosshair
   &:hover
-    bottom: calc(96px + 16px)
-  &::after
-    content: ''
-    position: absolute
-    right: 0px
-    top: 16px
-    width: 67px
+    bottom: calc(110px + 16px)
+    color: $secondary
+    fill: $secondary
+    
+  svg
     height: 16px
-    background: url('../img/arrow.svg')
-    background-position: center
-    background-size: contain
-    background-repeat: no-repeat
+    width: 76px

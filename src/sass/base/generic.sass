@@ -16,7 +16,7 @@ $code-padding: 0.25em 0.5em 0.25em !default
 $code-weight: normal !default
 $code-size: 0.875em !default
 
-$small-font-size: 0.875em !default
+$small-font-size: $body-font-size * 0.875 !default
 
 $hr-background-color: $background !default
 $hr-height: 2px !default
@@ -25,13 +25,15 @@ $hr-margin: 1.5rem 0 !default
 $strong-color: $text-strong !default
 $strong-weight: $weight-bold !default
 
-$pre-font-size: 0.875em !default
+$pre-font-size: $body-font-size * 0.875 !default
 $pre-padding: 1.25rem 1.5rem !default
-$pre-code-font-size: 1em !default
+$pre-code-font-size: $body-font-size !default
 
 html
   background-color: $body-background-color
   font-size: $body-size
+  @media (max-width: 600px)
+    font-size: $body-size * 0.875
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   min-width: $body-min-width

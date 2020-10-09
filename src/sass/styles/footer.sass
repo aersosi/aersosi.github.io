@@ -1,0 +1,18 @@
+footer
+  position: fixed
+  bottom: 110px
+  left: -75px
+  transform-origin: center
+
+  transform: rotate(-90deg)
+  display: flex
+  font-size: 2rem
+  font-family: 'Bluu Next'
+  font-style: italic
+  transition: bottom .15s ease-in-out, color .15s ease-in-out
+  &:hover
+    color: $secondary
+    bottom: calc(110px + 16px)
+
+  .aboutImprint
+    cursor: crosshair
