@@ -5,5 +5,5 @@ const makeImagesVisible = () => {
         item.classList.add("show");
       }, i * 100);
     });
-  }, 500);
+  }, 200);
 }
