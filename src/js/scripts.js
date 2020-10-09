@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // }
 
-
   let content_wrapper = document.querySelector("#content_wrapper");
   let content = document.querySelector("#content main");
 
@@ -27,15 +26,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let cleanArr = [];
   let gateWay = true;
 
- const createURLs = (tryIMG) => {
+  const createURLs = (tryIMG) => {
     for (let i = 1; i < 40; i++) {
       const png = `./dist/img/flags/flg_${i}.png`;
       const jpg = `./dist/img/flags/flg_${i}.jpg`;
       imgArray.push(png);
       imgArray.push(jpg);
     }
-    console.log('step1: createURLs')
-    tryIMG(imgArray, appendIMG)
+    console.log("step1: createURLs");
+    tryIMG(imgArray, appendIMG);
   };
 
   const tryIMG = (arr, appendIMG) => {
@@ -51,13 +50,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
           cleanArr.push(element);
         }
         if (itemsProcessed === arr.length) {
-          appendIMG(cleanArr.sort())
+          appendIMG(cleanArr.sort());
         }
       })
     );
-    console.log('step2: tryIMG')
+    console.log("step2: tryIMG");
   };
-
 
   let appendIMG = (arr) => {
     arr.forEach((url) => {
@@ -70,13 +68,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       content.appendChild(containerElm);
     });
-    console.log(arr)
-    console.log('step3: appendIMG')
+    console.log(arr);
+    console.log("step3: appendIMG");
     makeImagesVisible();
     addListeners();
   };
 
-  createURLs(tryIMG)
+  createURLs(tryIMG);
 
   // const makeBurger = (createURLs, tryIMG, appendIMG) => {
   //   createURLs()
@@ -86,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //   // addListeners();
   // }
   // makeBurger()
-
 
   // const getSignal = () => {
   //   const wrapperVal = Math.round(
@@ -99,6 +96,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //     return true;
   //   }
   // };
+
+  document.body.addEventListener("wheel", function (e) {
+    if (e.deltaY > 0) {
+      console.log("scrollup");
+    } else {
+      console.log("scrolldown");
+    }
+  });
 
   // ///////////////////// events
   content_wrapper.addEventListener("scroll", bgMove);
@@ -114,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 10), false);
   // content_wrapper.addEventListener("scroll", loadImgAfter, false);
-  
 
   window.addEventListener("resize", clipMarquee);
   marquee();
