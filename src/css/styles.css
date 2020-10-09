@@ -86,9 +86,6 @@ html {
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
   scroll-behavior: smooth; }
-  @media (max-width: 600px) {
-    html {
-      font-size: 14px; } }
 
 article,
 aside,
@@ -200,9 +197,6 @@ html {
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
   scroll-behavior: smooth; }
-  @media (max-width: 600px) {
-    html {
-      font-size: 14px; } }
 
 article,
 aside,
@@ -334,27 +328,27 @@ table th {
 
 body,
 html {
-  overflow: hidden;
   height: 100%;
   scroll-behavior: smooth; }
 
-body {
+body,
+#content {
   background: url("../img/bg.svg");
   transition: background-position-y .05s ease;
   background-attachment: fixed;
   background-position-x: center; }
   @media (max-width: 911px) {
-    body {
+    body,
+    #content {
       background-size: 30px; } }
   @media (max-width: 600px) {
-    body {
+    body,
+    #content {
       background-size: 20px; } }
 
 #content_wrapper {
   height: 100%;
-  overflow: auto;
-  padding-top: 110px;
-  scroll-behavior: smooth; }
+  padding-top: 60px; }
 
 #content main {
   display: flex;
@@ -373,6 +367,26 @@ h2 {
   font-size: 1em;
   font-family: 'Bluu Next';
   font-style: italic; }
+
+#spinner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 2000;
+  background: #19FFDD;
+  font-family: 'Bluu Next';
+  font-style: italic;
+  font-size: 6rem;
+  line-height: 1;
+  transition: opacity 0.75s ease-in-out; }
+  #spinner h1 {
+    display: inline-flex; }
 
 footer {
   position: fixed;
@@ -405,12 +419,8 @@ footer {
       flex: 0 1 480px; } }
   @media (orientation: portrait) and (max-width: 911px) {
     .img-cont {
-      flex: 1 1 60%;
-      flex: 0 1 60%; } }
-  @media (orientation: portrait) and (max-width: 600px) {
-    .img-cont {
-      flex: 1 1 75%;
-      flex: 0 1 75%; } }
+      flex: 1 1 calc(100% - 120px);
+      flex: 0 1 calc(100% - 120px); } }
   .img-cont::before {
     content: '';
     pointer-events: none;
@@ -563,25 +573,23 @@ footer {
 .modalWrapper.show {
   opacity: .95; }
 
-.slider {
+.marqueeContainer {
   opacity: 0;
-  transition: opacity .75s ease-in-out;
+  transition: opacity .75s ease-in-out, color 0.15s ease-in-out;
   position: fixed;
-  top: 28px;
+  top: 14px;
   left: 0;
   right: 10px;
+  height: 2rem;
   width: 1000%;
-  height: 64px;
-  overflow: hidden;
   z-index: 1000;
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: 'Bluu Next';
   font-style: italic;
-  transition: color 0.15s ease-in-out;
   cursor: crosshair; }
-  .slider:hover {
+  .marqueeContainer:hover {
     color: #19FFDD; }
-  .slider li {
+  .marqueeContainer li {
     list-style: none;
     display: inline-flex; }
 

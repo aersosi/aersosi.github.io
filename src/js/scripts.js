@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   //= include throttle.js
   //= include putTel.js
   //= include marquee.js
-  //= include clipMarquee.js
   //= include modal.js
   //= include bgMove.js
   //= include createIMG.js
@@ -33,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       imgArray.push(png);
       imgArray.push(jpg);
     }
-    console.log("step1: createURLs");
+    // console.log("step1: createURLs");
     tryIMG(imgArray, appendIMG);
   };
 
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
       })
     );
-    console.log("step2: tryIMG");
+    // console.log("step2: tryIMG");
   };
 
   let appendIMG = (arr) => {
@@ -68,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       content.appendChild(containerElm);
     });
-    console.log(arr);
-    console.log("step3: appendIMG");
+    // console.log(arr);
+    // console.log("step3: appendIMG");
     makeImagesVisible();
     addListeners();
   };
@@ -99,9 +98,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   document.body.addEventListener("wheel", function (e) {
     if (e.deltaY > 0) {
-      console.log("scrollup");
+      // console.log("scrollup");
     } else {
-      console.log("scrolldown");
+      // console.log("scrolldown");
     }
   });
 
@@ -119,8 +118,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 10), false);
   // content_wrapper.addEventListener("scroll", loadImgAfter, false);
+  
+  setTimeout(marquee, 200)
 
-  window.addEventListener("resize", clipMarquee);
-  marquee();
-  clipMarquee();
+  const spinner = () => {
+    const spinner = document.getElementById("spinner");
+    setTimeout( () => { 
+      spinner.style.opacity = 0
+    }, 400);
+    setTimeout( () => { 
+      spinner.style.display = 'none' 
+    }, 1150);
+  };
+  
+  spinner()
+
 });

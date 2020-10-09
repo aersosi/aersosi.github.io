@@ -10,11 +10,9 @@
     flex: 1 1 480px
     flex: 0 1 480px
   @media (orientation: portrait) and (max-width: 911px)
-    flex: 1 1 60%
-    flex: 0 1 60%
-  @media (orientation: portrait) and (max-width: 600px)
-    flex: 1 1 75%
-    flex: 0 1 75%
+    flex: 1 1 calc(100% - 120px)
+    flex: 0 1 calc(100% - 120px)
+
   &::before
     content: ''
     pointer-events: none
