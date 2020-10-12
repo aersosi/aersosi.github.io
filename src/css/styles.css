@@ -336,7 +336,7 @@ body,
   background: url("../img/bg.svg");
   transition: background-position-y .05s ease;
   background-attachment: fixed;
-  background-position-x: center; }
+  background-position-x: center center; }
   @media (max-width: 911px) {
     body,
     #content {
@@ -385,6 +385,9 @@ h2 {
   font-size: 6rem;
   line-height: 1;
   transition: opacity 0.75s ease-in-out; }
+  @media (max-width: 911px) {
+    #spinner {
+      font-size: 5rem; } }
   #spinner h1 {
     display: inline-flex; }
 
@@ -399,6 +402,10 @@ footer {
   font-family: 'Bluu Next';
   font-style: italic;
   transition: bottom .15s ease-in-out, color .15s ease-in-out; }
+  @media (max-width: 911px) {
+    footer {
+      font-size: 1.75rem;
+      left: -70px; } }
   footer:hover {
     color: #19FFDD;
     bottom: calc(110px + 16px); }
@@ -606,6 +613,9 @@ footer {
   transition: bottom 0.15s ease-in-out, color 0.15s ease-in-out, fill 0.15s ease-in-out;
   background: transparent;
   cursor: crosshair; }
+  @media (max-width: 911px) {
+    .toTopButton {
+      font-size: 1.75rem; } }
   .toTopButton:hover {
     bottom: calc(110px + 16px);
     color: #19FFDD;

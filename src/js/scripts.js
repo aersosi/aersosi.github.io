@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   console.log("await2003");
-  //= include throttle.js
-  //= include putTel.js
-  //= include marquee.js
-  //= include modal.js
-  //= include bgMove.js
-  //= include createIMG.js
-  //= include addListeners.js
-  //= include makeImagesVisible.js
-  //= include scrollToTop.js
-  //= include lightBox.min.js
+  //= include ./functions/throttle.js
+  //= include ./functions/scrollNoScroll.js
+  //= include ./functions/putTel.js
+  //= include ./functions/marquee.js
+  //= include ./functions/modal.js
+  //= include ./functions/bgMove.js
+  //= include ./functions/createIMG.js
+  //= include ./functions/addListeners.js
+  //= include ./functions/makeImagesVisible.js
+  //= include ./functions/scrollToTop.js
+  //= include ./functions/lightBox.min.js
 
   ///////////////////// add images on scroll
   // const tryIMG = (arr) => {
@@ -57,6 +58,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   };
 
   let appendIMG = (arr) => {
+    spinner()
+
     arr.forEach((url) => {
       let containerElm = document.createElement("div");
       containerElm.classList.add("img-cont");
@@ -64,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
       imgElm.classList.add("image");
       imgElm.src = url;
       containerElm.appendChild(imgElm);
-
       content.appendChild(containerElm);
     });
     // console.log(arr);
@@ -73,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     addListeners();
   };
 
-  createURLs(tryIMG);
 
   // const makeBurger = (createURLs, tryIMG, appendIMG) => {
   //   createURLs()
@@ -119,18 +120,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 10), false);
   // content_wrapper.addEventListener("scroll", loadImgAfter, false);
   
-  setTimeout(marquee, 200)
-
+  
   const spinner = () => {
     const spinner = document.getElementById("spinner");
     setTimeout( () => { 
       spinner.style.opacity = 0
     }, 400);
     setTimeout( () => { 
-      spinner.style.display = 'none' 
+      spinner.style.display = 'none'
     }, 1150);
+    return true;
   };
   
-  spinner()
+  
+  setTimeout(marquee, 200)
+  createURLs(tryIMG);
+
+
+  // noScroll('body')
+
+  
 
 });
