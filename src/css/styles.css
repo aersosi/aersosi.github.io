@@ -597,6 +597,8 @@ footer {
   .marqueeContainer li {
     list-style: none;
     display: inline-flex; }
+  .marqueeContainer .marquee {
+    white-space: nowrap; }
 
 .toTopButton {
   position: fixed;
