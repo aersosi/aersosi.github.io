@@ -424,8 +424,8 @@ footer {
       flex: 0 1 480px; } }
   @media (orientation: portrait) and (max-width: 836.9px) {
     .img-cont {
-      flex: 1 1 calc(100% - 120px);
-      flex: 0 1 calc(100% - 120px); } }
+      flex: 1 1 calc(100% - 112px);
+      flex: 0 1 calc(100% - 112px); } }
   .img-cont::before {
     content: '';
     pointer-events: none;
