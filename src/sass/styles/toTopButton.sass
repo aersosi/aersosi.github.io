@@ -11,8 +11,14 @@
   transition: bottom 0.15s ease-in-out, color 0.15s ease-in-out, fill 0.15s ease-in-out
   background: transparent
   cursor: crosshair
-  @media (max-width: 911px)
+  @media (max-width: 836.9px)
     font-size: 1.75rem
+    right: -72px
+    bottom: 96px
+  @media (max-height: 349.9px)
+    font-size: 1.5rem
+    right: -64px
+    bottom: 80px
   &:hover
     bottom: calc(110px + 16px)
     color: $secondary
@@ -21,3 +27,9 @@
   svg
     height: 16px
     width: 76px
+    @media (max-width: 836.9px)
+      height: 14px
+      width: 67px
+    @media (max-height: 349.9px)
+      height: 12px
+      width: 58px 

@@ -337,7 +337,7 @@ body,
   transition: background-position-y .05s ease;
   background-attachment: fixed;
   background-position-x: center center; }
-  @media (max-width: 911px) {
+  @media (max-width: 836.9px) {
     body,
     #content {
       background-size: 30px; } }
@@ -354,7 +354,9 @@ body,
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center; }
+  justify-content: center;
+  padding-left: 40px;
+  padding-right: 40px; }
 
 section {
   margin-bottom: 3rem; }
@@ -380,11 +382,6 @@ h2 {
   z-index: 2000;
   background: #19FFDD;
   transition: opacity 0.75s ease-in-out; }
-  #spinner svg {
-    width: 100%;
-    height: 100%;
-    max-height: 75vh;
-    max-width: 65vw; }
 
 footer {
   position: fixed;
@@ -397,10 +394,16 @@ footer {
   font-family: 'Bluu Next';
   font-style: italic;
   transition: bottom .15s ease-in-out, color .15s ease-in-out; }
-  @media (max-width: 911px) {
+  @media (max-width: 836.9px) {
     footer {
       font-size: 1.75rem;
-      left: -70px; } }
+      left: -72px;
+      bottom: 96px; } }
+  @media (max-height: 349.9px) {
+    footer {
+      font-size: 1.5rem;
+      left: -64px;
+      bottom: 80px; } }
   footer:hover {
     color: #19FFDD;
     bottom: calc(110px + 16px); }
@@ -419,7 +422,7 @@ footer {
     .img-cont {
       flex: 1 1 480px;
       flex: 0 1 480px; } }
-  @media (orientation: portrait) and (max-width: 911px) {
+  @media (orientation: portrait) and (max-width: 836.9px) {
     .img-cont {
       flex: 1 1 calc(100% - 120px);
       flex: 0 1 calc(100% - 120px); } }
@@ -474,7 +477,7 @@ footer {
   background: url("../img/bg.svg");
   background-position: center;
   background-size: 60px; }
-  @media (max-width: 911px) {
+  @media (max-width: 836.9px) {
     .Lightbox__placeholder:before {
       background-size: 50px; } }
   @media (max-width: 600px) {
@@ -508,7 +511,7 @@ footer {
   max-width: 85%;
   max-height: 85%;
   box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.5); }
-  @media (max-width: 911px) {
+  @media (max-width: 836.9px) {
     .Lightbox__placeholder > iframe:first-child:last-child,
     .Lightbox__placeholder > img:first-child:last-child,
     .Lightbox__placeholder > video:first-child:last-child {
@@ -550,7 +553,7 @@ footer {
   background: url("../img/bg.svg");
   background-position: center;
   background-size: 60px; }
-  @media (max-width: 911px) {
+  @media (max-width: 836.9px) {
     .modalWrapper {
       background-size: 50px; } }
   @media (max-width: 600px) {
@@ -608,9 +611,16 @@ footer {
   transition: bottom 0.15s ease-in-out, color 0.15s ease-in-out, fill 0.15s ease-in-out;
   background: transparent;
   cursor: crosshair; }
-  @media (max-width: 911px) {
+  @media (max-width: 836.9px) {
     .toTopButton {
-      font-size: 1.75rem; } }
+      font-size: 1.75rem;
+      right: -72px;
+      bottom: 96px; } }
+  @media (max-height: 349.9px) {
+    .toTopButton {
+      font-size: 1.5rem;
+      right: -64px;
+      bottom: 80px; } }
   .toTopButton:hover {
     bottom: calc(110px + 16px);
     color: #19FFDD;
@@ -618,3 +628,11 @@ footer {
   .toTopButton svg {
     height: 16px;
     width: 76px; }
+    @media (max-width: 836.9px) {
+      .toTopButton svg {
+        height: 14px;
+        width: 67px; } }
+    @media (max-height: 349.9px) {
+      .toTopButton svg {
+        height: 12px;
+        width: 58px; } }
