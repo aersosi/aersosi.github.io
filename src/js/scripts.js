@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-  console.log("await2003");
+  // console.log("await2003");
   //= include ./functions/throttle.js
   //= include ./functions/scrollNoScroll.js
   //= include ./functions/putTel.js
