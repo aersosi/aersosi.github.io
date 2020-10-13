@@ -568,7 +568,7 @@ footer {
       .modalWrapper .modal {
         padding: 24px; } }
   .modalWrapper .close {
-    position: absolute;
+    position: fixed;
     top: 24px;
     right: 24px;
     font-size: 2rem;
