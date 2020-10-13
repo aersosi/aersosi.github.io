@@ -539,6 +539,7 @@ footer {
   transform: scale(1); }
 
 .modalWrapper {
+  overflow: auto;
   display: none;
   justify-content: center;
   align-items: center;
@@ -563,17 +564,19 @@ footer {
     width: 100%;
     height: 100%;
     padding: 56px; }
+    @media (max-width: 836.9px) {
+      .modalWrapper .modal {
+        padding: 24px; } }
   .modalWrapper .close {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 24px;
+    right: 24px;
     font-size: 2rem;
     font-family: 'Bluu Next';
     font-style: italic;
     transition: padding .15s ease-in-out, color .15s ease-in-out;
     cursor: crosshair; }
     .modalWrapper .close:hover {
-      padding-right: 16px;
       color: #19FFDD; }
     .modalWrapper .close .st22 {
       fill: none;
