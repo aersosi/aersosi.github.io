@@ -355,8 +355,8 @@ body,
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding-left: 40px;
-  padding-right: 40px; }
+  padding-left: 32px;
+  padding-right: 32px; }
 
 section {
   margin-bottom: 3rem; }
@@ -515,8 +515,8 @@ footer {
     .Lightbox__placeholder > iframe:first-child:last-child,
     .Lightbox__placeholder > img:first-child:last-child,
     .Lightbox__placeholder > video:first-child:last-child {
-      max-width: 95%;
-      max-height: 95%; } }
+      max-width: 90%;
+      max-height: 90%; } }
 
 .Lightbox__placeholder > iframe:first-child:last-child,
 .Lightbox__placeholder > video:first-child:last-child {
