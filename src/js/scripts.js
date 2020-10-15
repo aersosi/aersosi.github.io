@@ -128,7 +128,7 @@ let chunkCounter = 4;
     const contentVal = content.offsetHeight;
 
     // if (wrapperVal + 200 >= contentVal && scrollDown) {
-    if (wrapperVal + 200 >= contentVal) {
+    if (wrapperVal >= contentVal) {
       addThree();
     } else if (!scrollDown) {
       console.log("scroll UP");
