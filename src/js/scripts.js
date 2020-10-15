@@ -105,11 +105,7 @@ let chunkCounter = 4;
 
   const addThree = () => {
     let ChunkCounterMax = cleanChunks.length;
-    console.log(cleanChunks)
     if (addThree && chunkCounter < ChunkCounterMax) {
-      
-      console.log(chunkCounter)
-      console.log(ChunkCounterMax)
 
       // let firstThree = document.querySelectorAll(".img-cont:nth-child(-n+3)");
       // firstThree.forEach((e) => e.remove());
