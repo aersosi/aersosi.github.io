@@ -1,43 +1,47 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   // console.log("await2003");
   //= include ./functions/throttle.js
+  //= include ./functions/spinner.js
   //= include ./functions/scrollNoScroll.js
+  //= include ./functions/scroll_down_check.js
   //= include ./functions/putTel.js
   //= include ./functions/marquee.js
   //= include ./functions/modal.js
   //= include ./functions/bgMove.js
-  //= include ./functions/createIMG.js
-  //= include ./functions/addListeners.js
-  //= include ./functions/makeImagesVisible.js
+  //= include ./functions/add_listeners.js
+  //= include ./functions/make_IMGs_visible.js
   //= include ./functions/scrollToTop.js
   //= include ./functions/lightBox.min.js
 
-  ///////////////////// add images on scroll
-  // const tryIMG = (arr) => {
-  //   console.log(arr);
 
-  // }
 
-  let content_wrapper = document.querySelector("#content_wrapper");
-  let content = document.querySelector("#content main");
+  const content_wrapper = document.querySelector("#content_wrapper");
+  const content = document.querySelector("#content main");
+  const spinnerDIV = document.getElementById("spinner");
 
   let failCount = 0;
   let imgArray = [];
   let cleanArr = [];
+  let cleanChunks = [];
+  let threeChunk = [];
   let gateWay = true;
+  let scrollDown = false;
 
-  const createURLs = (tryIMG) => {
-    for (let i = 1; i < 40; i++) {
+
+  ///////////////////// add images on scroll
+
+  const trycreate_URLs = (try_IMG) => {
+    let i;
+    for (i = 1; i < 40; i++) {
       const png = `./dist/img/flags/flg_${i}.png`;
       const jpg = `./dist/img/flags/flg_${i}.jpg`;
       imgArray.push(png);
       imgArray.push(jpg);
     }
-    // console.log("step1: createURLs");
-    tryIMG(imgArray, appendIMG);
+    try_IMG(imgArray, append_IMGs);
   };
 
-  const tryIMG = (arr, appendIMG) => {
+  const try_IMG = (arr, append_IMGs) => {
     let itemsProcessed = 0;
     arr.forEach((element) =>
       fetch(element).then((response) => {
@@ -50,16 +54,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
           cleanArr.push(element);
         }
         if (itemsProcessed === arr.length) {
-          appendIMG(cleanArr.sort());
+          // cut in chunks of 3
+          let i,
+            j = cleanArr.length,
+            chunk = 3,
+            firstTwelveArr = [];
+
+          for (i = 0; i < j; i += chunk) {
+            threeChunk[i / 3] = cleanArr.slice(i, i + chunk);
+            cleanChunks.push(threeChunk[i / 3]);
+          }
+          firstTwelveArr = cleanChunks.slice(0, 4).flat();
+          spinner(spinnerDIV);
+          append_IMGs(firstTwelveArr);
         }
       })
     );
-    // console.log("step2: tryIMG");
   };
 
-  let appendIMG = (arr) => {
-    spinner()
-
+  let append_IMGs = (arr) => {
+    let allDone = 0;
     arr.forEach((url) => {
       let containerElm = document.createElement("div");
       containerElm.classList.add("img-cont");
@@ -68,45 +82,66 @@ document.addEventListener("DOMContentLoaded", function (event) {
       imgElm.src = url;
       containerElm.appendChild(imgElm);
       content.appendChild(containerElm);
+
+      make_IMGs_visible()
+      const thisIMG = document.querySelector(`img[src='${url}']`)
+      add_listeners(thisIMG);
+      allDone++;
     });
-    // console.log(arr);
-    // console.log("step3: appendIMG");
-    makeImagesVisible();
-    addListeners();
+    if (allDone == arr.length) {
+      return true;
+    }
   };
 
-
-  // const makeBurger = (createURLs, tryIMG, appendIMG) => {
-  //   createURLs()
-  //   // tryIMG(createURLs)
-  //   // appendIMG(tryIMG)
-  //   // makeImagesVisible();
-  //   // addListeners();
+  // const makeBurger = (trycreate_URLs, try_IMG, append_IMGs) => {
+  //   trycreate_URLs()
+  //   try_IMG(trycreate_URLs)
+  //   append_IMGs(try_IMG)
+  //   add_listeners();
   // }
   // makeBurger()
 
-  // const getSignal = () => {
-  //   const wrapperVal = Math.round(
-  //     content_wrapper.scrollTop + content_wrapper.offsetHeight
-  //   );
-  //   const contentVal = content.offsetHeight;
-  //   if (wrapperVal + 300 >= contentVal && gateway) {
-  //     console.log(wrapperVal + 300);
-  //     console.log(contentVal);
-  //     return true;
-  //   }
-  // };
+let chunkCounter = 4;
 
-  document.body.addEventListener("wheel", function (e) {
-    if (e.deltaY > 0) {
-      // console.log("scrollup");
-    } else {
-      // console.log("scrolldown");
+  const addThree = () => {
+    let ChunkCounterMax = cleanChunks.length;
+    console.log(cleanChunks)
+    if (addThree && chunkCounter < ChunkCounterMax) {
+      
+      console.log(chunkCounter)
+      console.log(ChunkCounterMax)
+
+      // let firstThree = document.querySelectorAll(".img-cont:nth-child(-n+3)");
+      // firstThree.forEach((e) => e.remove());
+      
+      let nextThree = cleanChunks[chunkCounter].flat();
+      chunkCounter++;
+      append_IMGs(nextThree);
+
+      // delete_IMGs(firstThree);
+      if (append_IMGs) {
+        return true;
+      }
     }
-  });
+  };
 
-  // ///////////////////// events
-  content_wrapper.addEventListener("scroll", bgMove);
+  const getSignal = () => {
+    const wrapperVal = Math.round(
+      document.body.scrollTop + document.body.offsetHeight
+    );
+    const contentVal = content.offsetHeight;
+
+    if (wrapperVal + 200 >= contentVal && scrollDown) {
+      addThree();
+    } else if (!scrollDown) {
+      console.log("scroll UP");
+    }
+  };
+
+
+
+  /////////////////////// events ///////////////////////
+  // content_wrapper.addEventListener("scroll", bgMove);
 
   let toTopButton = document.querySelector(".toTopButton");
   toTopButton.addEventListener("click", toTop, false);
@@ -117,28 +152,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let aboutImprintClose = document.querySelector(".close");
   aboutImprintClose.addEventListener("click", removeModal);
 
-  // content_wrapper.addEventListener("scroll", throttle(loadImgAfter, 10), false);
-  // content_wrapper.addEventListener("scroll", loadImgAfter, false);
-  
-  
-  const spinner = () => {
-    const spinner = document.getElementById("spinner");
-    setTimeout( () => { 
-      spinner.style.opacity = 0
-    }, 400);
-    setTimeout( () => { 
-      spinner.style.display = 'none'
-    }, 1150);
-    return true;
-  };
-  
-  
-  setTimeout(marquee, 200)
-  createURLs(tryIMG);
+  window.addEventListener("wheel", scroll_down_check, false);
+  window.addEventListener("scroll", getSignal, false);
 
-
-  // noScroll('body')
-
-  
-
+  setTimeout(marquee, 200);
+  trycreate_URLs(try_IMG);
 });

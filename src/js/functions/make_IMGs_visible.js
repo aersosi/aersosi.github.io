@@ -1,4 +1,4 @@
-const makeImagesVisible = () => {
+const make_IMGs_visible = () => {
  setTimeout(() => {
     document.querySelectorAll(".img-cont:not(.show)").forEach((item, i) => {
       setTimeout(() => {
