@@ -127,7 +127,8 @@ let chunkCounter = 4;
     );
     const contentVal = content.offsetHeight;
 
-    if (wrapperVal + 200 >= contentVal && scrollDown) {
+    // if (wrapperVal + 200 >= contentVal && scrollDown) {
+    if (wrapperVal + 200 >= contentVal) {
       addThree();
     } else if (!scrollDown) {
       console.log("scroll UP");
@@ -148,7 +149,7 @@ let chunkCounter = 4;
   let aboutImprintClose = document.querySelector(".close");
   aboutImprintClose.addEventListener("click", removeModal);
 
-  window.addEventListener("wheel", scroll_down_check, false);
+  // window.addEventListener("wheel", scroll_down_check, false);
   window.addEventListener("scroll", getSignal, false);
 
   setTimeout(marquee, 200);
