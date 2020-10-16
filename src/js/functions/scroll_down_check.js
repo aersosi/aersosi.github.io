@@ -1,7 +1,10 @@
-const scroll_down_check = (e) => {
-    if (e.deltaY > 0) {
-      scrollDown = true;
-    } else {
-      scrollDown = false;
-    }
-  };
+var scrollPos = 0;
+window.addEventListener('scroll', function(){
+  if ((document.body.getBoundingClientRect()).top > scrollPos) {
+    scrollDown = false;
+  }  else {
+    scrollDown = true;
+  }
+  scrollPos = (document.body.getBoundingClientRect()).top;
+  // console.log(scrollPos)
+});
