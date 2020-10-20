@@ -420,8 +420,8 @@ footer {
   cursor: crosshair; }
   @media (min-width: 1200px) {
     .img-cont {
-      flex: 1 1 480px;
-      flex: 0 1 480px; } }
+      flex: 1 1 400px;
+      flex: 0 1 400px; } }
   @media (orientation: portrait) and (max-width: 836.9px) {
     .img-cont {
       flex: 1 1 calc(100% - 112px);
@@ -616,7 +616,8 @@ h2 {
     list-style: none;
     display: inline-flex; }
   .marqueeContainer .marquee {
-    white-space: nowrap; }
+    white-space: nowrap;
+    display: flex; }
 
 .toTopButton {
   position: fixed;

@@ -18,12 +18,10 @@ const marqueeOpacity = () => {
   marqueeElem.style.opacity = 1
 };
 
-setTimeout( marqueeOpacity , 500)
 
 const move = (elem) => {
   const elemWidth = Math.ceil(elem.clientWidth);
-
-  
+  console.log(elemWidth)
 
   let mLeft = 0;
   const frame = () => {
@@ -34,5 +32,5 @@ const move = (elem) => {
       mLeft = 0;
     }
   };
-  const id = setInterval(frame, 20); // draw every 10ms
+  const id = setInterval(frame, 10); // draw every 10ms
 };

@@ -150,6 +150,8 @@ let chunkCounter = 4;
 
   window.addEventListener("scroll", getSignal, false);
 
-  setTimeout(marquee, 200);
+  setTimeout(marquee, 400);
+  setTimeout( marqueeOpacity , 800)
+
   trycreate_URLs(try_IMG);
 });
