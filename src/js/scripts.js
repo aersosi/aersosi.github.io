@@ -33,10 +33,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const trycreate_URLs = (try_IMG) => {
     let i;
     for (i = 1; i < 40; i++) {
-      const png = `./dist/img/flags/flg_${i}.png`;
-      const jpg = `./dist/img/flags/flg_${i}.jpg`;
-      imgArray.push(png);
-      imgArray.push(jpg);
+      const svg = `./dist/img/flags/svg/flg_${i}.svg`;
+      imgArray.push(svg);
     }
     try_IMG(imgArray, append_IMGs);
   };
