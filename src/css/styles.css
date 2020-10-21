@@ -356,7 +356,8 @@ body,
   flex-wrap: wrap;
   justify-content: center;
   padding-left: 32px;
-  padding-right: 32px; }
+  padding-right: 32px;
+  padding-bottom: 32px; }
 
 section {
   margin-bottom: 3rem; }
