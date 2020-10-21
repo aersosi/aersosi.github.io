@@ -77,12 +77,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
       containerElm.classList.add("img-cont");
       let imgElm = document.createElement("img");
       imgElm.classList.add("image");
-      imgElm.src = url;
+      imgElm.setAttribute('data-url', url)
+      // imgElm.src = url;
+      imgElm.style.backgroundImage = "url('"+url+"')"
+      imgElm.src = './dist/img/flg_t.png';
       containerElm.appendChild(imgElm);
       content.appendChild(containerElm);
 
       make_IMGs_visible()
-      const thisIMG = document.querySelector(`img[src='${url}']`)
+      const thisIMG = document.querySelector(`img[data-url='${url}']`)
       add_listeners(thisIMG);
       allDone++;
     });

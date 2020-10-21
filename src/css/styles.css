@@ -509,12 +509,14 @@ footer {
   left: 0;
   margin: auto;
   max-width: 85%;
+  max-height: 85%;
   box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.5); }
   @media (max-width: 836.9px) {
     .Lightbox__placeholder > iframe:first-child:last-child,
     .Lightbox__placeholder > img:first-child:last-child,
     .Lightbox__placeholder > video:first-child:last-child {
-      max-width: 90%; } }
+      max-width: 90%;
+      max-height: 90%; } }
 
 .Lightbox__placeholder > iframe:first-child:last-child,
 .Lightbox__placeholder > video:first-child:last-child {
