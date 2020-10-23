@@ -475,6 +475,10 @@ footer {
     @media (max-width: 836.9px) {
       .modalWrapper .modal {
         padding: 24px; } }
+    .modalWrapper .modal section {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto; }
   .modalWrapper .close {
     position: fixed;
     top: 24px;
