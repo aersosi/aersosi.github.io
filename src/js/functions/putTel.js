@@ -10,11 +10,11 @@ const getElementsByClass = (elem, classname) => {
 }
 
 
-const putEmail = (eml, emlSpan, textWhite) => {
+const putEmail = (eml, emlSpan) => {
     if (emlSpan) {
         const link = document.createElement("a");
         link.setAttribute("href", "mailto:" + eml);
-        link.classList.add('text-link', textWhite);
+        link.classList.add('text-link');
         link.appendChild(document.createTextNode(eml));
         const spans = getElementsByClass("span", emlSpan);
         spans.forEach(el => el.parentNode.replaceChild(link.cloneNode(true), el))
