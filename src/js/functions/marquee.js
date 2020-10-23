@@ -21,7 +21,7 @@ const marqueeOpacity = () => {
 
 const move = (elem) => {
   const elemWidth = Math.ceil(elem.clientWidth);
-  console.log(elemWidth)
+  //console.log(elemWidth)
 
   let mLeft = 0;
   const frame = () => {
