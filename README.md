@@ -1,2 +1,2 @@
-# flags-for-a-new-world
+# Modern flags, ancient world
 Some custom designed flags
